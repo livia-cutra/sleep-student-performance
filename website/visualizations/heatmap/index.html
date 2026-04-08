@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Hours, Sleep, and Exam Performance</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Study Hours, Sleep, and Exam Performance</h1>
+    <p class="subtitle">
+      This heatmap shows how combinations of study hours and sleep hours relate to student performance.
+      Darker cells indicate higher average exam scores or more students, depending on the selected view.
+    </p>
+
+    <div class="controls">
+      <label for="schoolFilter">School Type:</label>
+      <select id="schoolFilter">
+        <option value="All">All</option>
+        <option value="Private">Private</option>
+        <option value="Public">Public</option>
+      </select>
+
+      <label for="metricFilter">Color Based On:</label>
+      <select id="metricFilter">
+        <option value="avg_score">Average Exam Score</option>
+        <option value="count">Student Count</option>
+      </select>
+    </div>
+
+    <div id="chart"></div>
+    <div id="tooltip" class="tooltip"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
