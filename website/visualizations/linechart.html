@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300, "stroke": null}, "axis": {"grid": true, "labelFontSize": 11, "titleFontSize": 13}, "title": {"fontSize": 16, "offset": 15}}, "data": {"name": "data-79e3e8146326e35c990cfbdd58e2805a"}, "mark": {"type": "line", "point": {"size": 80}, "strokeWidth": 4}, "encoding": {"color": {"field": "Motivation_Level", "scale": {"range": ["#FF9F1C", "#2EC4B6", "#6C63FF"]}, "sort": ["Low", "Medium", "High"], "title": "Motivation Level", "type": "nominal"}, "tooltip": [{"field": "Access_to_Resources", "type": "nominal"}, {"field": "Motivation_Level", "type": "nominal"}, {"field": "Exam_Score", "format": ".2f", "type": "quantitative"}], "x": {"axis": {"labelAngle": 0, "titlePadding": 20}, "field": "Access_to_Resources", "sort": ["Low", "Medium", "High"], "title": "Access to Resources", "type": "nominal"}, "y": {"field": "Exam_Score", "scale": {"domain": [65, 75]}, "title": "Average Exam Score", "type": "quantitative"}}, "height": 150, "title": "Impact of Motivation and Resources on Exam Scores", "width": 300, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-79e3e8146326e35c990cfbdd58e2805a": [{"Access_to_Resources": "High", "Motivation_Level": "High", "Exam_Score": 68.52316076294278}, {"Access_to_Resources": "High", "Motivation_Level": "Low", "Exam_Score": 67.49355432780847}, {"Access_to_Resources": "High", "Motivation_Level": "Medium", "Exam_Score": 67.99087221095334}, {"Access_to_Resources": "Low", "Motivation_Level": "High", "Exam_Score": 66.67829457364341}, {"Access_to_Resources": "Low", "Motivation_Level": "Low", "Exam_Score": 65.6417525773196}, {"Access_to_Resources": "Low", "Motivation_Level": "Medium", "Exam_Score": 66.10806451612903}, {"Access_to_Resources": "Medium", "Motivation_Level": "High", "Exam_Score": 67.37037037037037}, {"Access_to_Resources": "Medium", "Motivation_Level": "Low", "Exam_Score": 66.50106837606837}, {"Access_to_Resources": "Medium", "Motivation_Level": "Medium", "Exam_Score": 67.07960199004975}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

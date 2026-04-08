@@ -1,0 +1,89 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f4f7;
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #1e1e7a, #6C63FF);
+  color: white;
+  padding: 60px 20px;
+  text-align: left;
+}
+
+.hero-content {
+  width: 80%;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 48px;
+}
+
+.hero p {
+  font-size: 18px;
+}
+
+/* INFO CARDS */
+.info-row {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  height: 250px;
+  margin: 60px auto;
+}
+
+.info-card {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+}
+
+/* VISUALS */
+.viz-section {
+  width: 80%;
+  margin: auto;
+}
+
+.viz-section h2 {
+  text-align: center;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.viz-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+}
+
+.viz-card iframe {
+  width: 100%;
+  height: 250px;
+  border: none;
+  overflow: hidden;
+}
+
+/* BOTTOM SECTION */
+.bottom-row {
+  display: flex;
+  gap: 20px;
+  width: 80%;
+  margin: 40px auto;
+}
+
+.takeaways, .conclusion {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
