@@ -1,6 +1,6 @@
-const margin = { top: 70, right: 120, bottom: 80, left: 90 };
+const margin = { top: 20, right: 120, bottom: 80, left: 90 };
 const width = 820 - margin.left - margin.right;
-const height = 520 - margin.top - margin.bottom;
+const height = 460 - margin.top - margin.bottom;
 
 const svg = d3.select("#chart")
   .append("svg")
@@ -11,13 +11,11 @@ const chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left},${margin.top})`);
 
 const tooltip = d3.select("#tooltip");
-
 const schoolFilter = d3.select("#schoolFilter");
 const metricFilter = d3.select("#metricFilter");
 
-// fixed domains so layout stays stable
-const hoursValues = d3.range(1, 45);   // 1–44
-const sleepValues = d3.range(4, 11);   // 4–10
+const hoursValues = d3.range(1, 45);
+const sleepValues = d3.range(4, 11);
 
 const xScale = d3.scaleBand()
   .domain(hoursValues)
@@ -29,7 +27,6 @@ const yScale = d3.scaleBand()
   .range([height, 0])
   .padding(0.05);
 
-// axes groups
 chartGroup.append("g")
   .attr("class", "x-axis")
   .attr("transform", `translate(0,${height})`);
@@ -37,7 +34,6 @@ chartGroup.append("g")
 chartGroup.append("g")
   .attr("class", "y-axis");
 
-// axis labels
 chartGroup.append("text")
   .attr("class", "axis-label")
   .attr("x", width / 2)
@@ -53,17 +49,8 @@ chartGroup.append("text")
   .attr("text-anchor", "middle")
   .text("Sleep Hours");
 
-// chart title
-chartGroup.append("text")
-  .attr("class", "chart-title")
-  .attr("x", width / 2)
-  .attr("y", -30)
-  .attr("text-anchor", "middle")
-  .text("Average Exam Score by Study Hours and Sleep");
-
-// legend
 const legendGroup = svg.append("g")
-  .attr("transform", `translate(${width + margin.left + 35}, ${margin.top + 40})`);
+  .attr("transform", `translate(${width + margin.left + 35}, ${margin.top + 20})`);
 
 const legendTitle = legendGroup.append("text")
   .attr("class", "legend-title")
@@ -88,24 +75,21 @@ legendGroup.append("rect")
   .attr("height", 160)
   .style("stroke", "#999");
 
-// load CSV as text, skip first line, then parse
 d3.text("student_performance.csv").then(raw => {
-  const cleaned = raw.trim().split("\n").slice(1).join("\n");
+  // robust line splitting for both \n and \r\n
+  const cleaned = raw.trim().split(/\r?\n/).slice(1).join("\n");
 
   const data = d3.csvParse(cleaned, d => ({
-    Hours_Studied: +d.Hours_Studied,
-    Sleep_Hours: +d.Sleep_Hours,
-    Exam_Score: +d.Exam_Score,
-    School_Type: d.School_Type
+    Hours_Studied: +String(d.Hours_Studied).trim(),
+    Sleep_Hours: +String(d.Sleep_Hours).trim(),
+    Exam_Score: +String(d.Exam_Score).trim(),
+    School_Type: String(d.School_Type).trim()
   })).filter(d =>
     !isNaN(d.Hours_Studied) &&
     !isNaN(d.Sleep_Hours) &&
     !isNaN(d.Exam_Score) &&
     d.School_Type
   );
-
-  console.log("Loaded rows:", data.length);
-  console.log("Sample row:", data[0]);
 
   function updateChart() {
     const selectedSchool = schoolFilter.property("value");
@@ -142,6 +126,12 @@ d3.text("student_performance.csv").then(raw => {
       });
     });
 
+    chartGroup.select(".x-axis")
+      .call(d3.axisBottom(xScale).tickValues(hoursValues.filter(d => d % 2 === 0)));
+
+    chartGroup.select(".y-axis")
+      .call(d3.axisLeft(yScale));
+
     const valueKey = selectedMetric;
     const validValues = cellData
       .map(d => d[valueKey])
@@ -153,19 +143,6 @@ d3.text("student_performance.csv").then(raw => {
     const colorScale = d3.scaleSequential()
       .domain([minValue, maxValue])
       .interpolator(d3.interpolateYlOrRd);
-
-    chartGroup.select(".x-axis")
-      .call(d3.axisBottom(xScale).tickValues(hoursValues.filter(d => d % 2 === 0)));
-
-    chartGroup.select(".y-axis")
-      .call(d3.axisLeft(yScale));
-
-    chartGroup.select(".chart-title")
-      .text(
-        selectedMetric === "avg_score"
-          ? "Average Exam Score by Study Hours and Sleep"
-          : "Student Count by Study Hours and Sleep"
-      );
 
     legendTitle.text(selectedMetric === "avg_score" ? "Avg Score" : "Count");
 
@@ -190,15 +167,9 @@ d3.text("student_performance.csv").then(raw => {
     cells.enter()
       .append("rect")
       .attr("class", "cell")
-      .attr("x", d => xScale(d.Hours_Studied))
-      .attr("y", d => yScale(d.Sleep_Hours))
-      .attr("width", xScale.bandwidth())
-      .attr("height", yScale.bandwidth())
       .attr("stroke", "#ffffff")
       .attr("stroke-width", 0.6)
       .merge(cells)
-      .transition()
-      .duration(500)
       .attr("x", d => xScale(d.Hours_Studied))
       .attr("y", d => yScale(d.Sleep_Hours))
       .attr("width", xScale.bandwidth())
@@ -245,7 +216,6 @@ d3.text("student_performance.csv").then(raw => {
   updateChart();
   schoolFilter.on("change", updateChart);
   metricFilter.on("change", updateChart);
-
 }).catch(error => {
   console.error("Error loading or parsing CSV:", error);
 });

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sleep & Student Performance</title>
+  <title>Student Lifestyle, Study Habits, and Academic Performance</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,9 +11,9 @@
   <!-- HERO -->
   <header class="hero">
     <div class="hero-content">
-      <h1>Sleep & Student Performance</h1>
-      <p>Understanding How Lifestyle Affects Academic Success</p>
-      <span>Put Names Here • Data Science Project</span>
+      <h1>Student Lifestyle, Study Habits, and Academic Performance</h1>
+      <p>Exploring how sleep, study time, motivation, and other lifestyle factors relate to exam success</p>
+      <span>Vitrinnie Asante-Tannor • Isabella Boateng • Livia Cutra • David Gyamfi</span>
     </div>
   </header>
 
@@ -21,7 +21,11 @@
   <section class="info-row">
     <div class="info-card">
       <h3>Introduction</h3>
-      <p>This project explores how sleep, study habits, and lifestyle factors influence student performance.</p>
+      <p>
+        This project explores how sleep, study habits, and other lifestyle and background factors influence
+        student academic performance. By comparing behavioral and environmental variables, we aim to better
+        understand which patterns are most strongly associated with exam success.
+      </p>
     </div>
 
     <div class="info-card">
@@ -29,13 +33,16 @@
       <ul>
         <li>6,608 students</li>
         <li>13 features</li>
-        <li>Source: Kaggle</li>
+        <li>Source: Kaggle Student Performance Dataset</li>
       </ul>
     </div>
 
     <div class="info-card">
       <h3>Our Goal</h3>
-      <p>Identify which factors most impact academic performance.</p>
+      <p>
+        Identify which academic, behavioral, and lifestyle factors most strongly affect student exam
+        performance and present those relationships through clear and interactive visualizations.
+      </p>
     </div>
   </section>
 
@@ -48,38 +55,92 @@
       <div class="viz-card">
         <h3>Distribution of Exam Scores</h3>
         <iframe src="visualizations/histogram.html"></iframe>
-        <p>Write description here.</p>
+        <p>
+          This histogram provides an overall view of how exam scores are distributed across the dataset.
+          It helps establish a baseline for the project by showing where most students cluster and whether
+          scores are concentrated in a narrow or broad range.
+        </p>
       </div>
 
-      <div class="viz-card">
-        <h3>Sleep vs Exam Score</h3>
-        <iframe src="visualizations/scatter.html"></iframe>
-        <p>Write description here.</p>
-      </div>
+  <div class="viz-card">
+    <h3>Sleep Duration vs. Exam Score</h3>
+    <iframe src="visualizations/sleep.html"></iframe>
+    <p>
+   This visualization explores how sleep duration relates to exam performance.
+    It helps identify whether moderate sleep ranges are associated with stronger
+    academic outcomes compared to very low or very high sleep durations.
+   </p>
+  </div>
+
+  <div class="viz-card wide-card">
+  <h3>Hours Studied vs. Exam Score</h3>
+
+  <div class="viz-row">
+    <iframe src="visualizations/scatterplot.html"></iframe>
+
+    <div class="viz-text">
+      <p>
+        This scatterplot shows the relationship between hours studied and exam score,
+        with points colored by school type and interactive filters for exploration.
+        Overall, students who study more hours tend to achieve higher exam scores,
+        although the variation within each group suggests that study time alone does
+        not fully determine performance.
+      </p>
+    </div>
+  </div>
+</div>
 
       <div class="viz-card">
         <h3>Exam Scores by Sleep Category</h3>
         <iframe src="visualizations/boxplot.html"></iframe>
-        <p>Write description here.</p>
+        <p>
+          This box plot compares exam score distributions across sleep categories. It highlights differences
+          in central tendency and spread, making it easier to see whether certain sleep ranges are associated
+          with stronger or weaker academic outcomes.
+        </p>
       </div>
 
       <div class="viz-card">
-        <h3>Average Score vs Sleep Hours</h3>
+        <h3>Impact of Motivation and Resources on Exam Scores</h3>
         <iframe src="visualizations/linechart.html"></iframe>
-        <p>Write description here.</p>
+        <p>
+          This line chart compares average exam scores across levels of access to resources and motivation.
+          It helps show how non-academic factors interact and whether increased support and motivation are
+          associated with improved student performance.
+        </p>
+      </div>
+
+      <div class="viz-card wide-card">
+        <h3>Study Hours, Sleep, and Exam Performance</h3>
+        <iframe src="visualizations/heatmap/heatmap.html"></iframe>
+        <p>
+         This heatmap shows how combinations of study hours and sleep hours relate to student performance.
+         Cells with darker color indicate either higher average exam scores or greater student concentration,
+         depending on the selected setting. The visualization suggests that academic performance is shaped by
+         the balance between studying and sleep rather than by one factor alone.
+        </p>
       </div>
 
       <div class="viz-card">
-        <h3>Study Time vs Exam Score</h3>
-        <iframe src="visualizations/study.html"></iframe>
-        <p>Write description here.</p>
-      </div>
-
-      <div class="viz-card">
-        <h3>Motivation vs Performance</h3>
+        <h3>Motivation vs. Performance</h3>
         <iframe src="visualizations/motivation.html"></iframe>
-        <p>Write description here.</p>
+        <p>
+          This visualization examines how motivation level relates to student performance. It helps reveal
+          whether students with higher motivation tend to achieve stronger scores and how motivation compares
+          with the other behavioral factors included in the project.
+        </p>
       </div>
+
+   <div class="viz-card">
+  <h3>Study Time vs Sleep Balance</h3>
+  <iframe src="visualizations/study_sleep.html"></iframe>
+  <p>
+    This visualization compares study time and sleep together to examine how
+    balanced habits relate to performance. It highlights that strong outcomes
+    are often associated with combinations of adequate sleep and consistent
+    study time rather than extremes of either behavior.
+  </p>
+</div>
 
     </div>
   </section>
@@ -88,20 +149,65 @@
   <section class="bottom-row">
 
     <div class="takeaways">
-      <h3>Key Takeaways</h3>
-      <ul>
-        <li>More sleep → higher scores</li>
-        <li>Study time improves performance</li>
-        <li>Lifestyle factors matter</li>
-      </ul>
-    </div>
+  <h3>Key Takeaways</h3>
+
+  <div class="takeaway-box">
+    <h4>Academic success is multi-dimensional</h4>
+    <p>
+      Exam performance is not explained by sleep or study time alone. The visualizations suggest
+      that student outcomes are shaped by a combination of behavioral, academic, and background factors.
+    </p>
+  </div>
+
+  <div class="takeaway-box">
+    <h4>Study habits matter most in context</h4>
+    <p>
+      More study time is generally associated with stronger performance, but its impact becomes more
+      meaningful when viewed alongside sleep patterns, attendance, and other lifestyle behaviors.
+    </p>
+  </div>
+
+  <div class="takeaway-box">
+    <h4>Resources and motivation influence outcomes</h4>
+    <p>
+      Differences in motivation and access-related variables suggest that academic performance is also
+      connected to the broader environment students learn in, not just the effort they put in individually.
+    </p>
+  </div>
+</div>
 
     <div class="conclusion">
       <h3>Conclusion</h3>
-      <p>Sleep and lifestyle habits significantly impact academic success.</p>
+      <p>
+        Student academic success is influenced by more than one variable. Across the visualizations, the data
+        suggests that exam performance is shaped by the interaction of study habits, sleep behavior, and other
+        lifestyle and support-related factors.
+      </p>
     </div>
 
   </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-content">
+    <h3>Student Lifestyle & Academic Performance</h3>
+    <p>
+      Data Visualization Project exploring how study habits, sleep, and lifestyle
+      factors influence student performance.
+    </p>
+
+    <div class="footer-meta">
+      <span>Vitrinnie Asante-Tannor</span>
+      <span>Isabella Boateng</span>
+      <span>Livia Cutra</span>
+      <span>David Gyamfi</span>
+    </div>
+
+    <div class="footer-source">
+      Dataset: Kaggle Student Performance Dataset
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
