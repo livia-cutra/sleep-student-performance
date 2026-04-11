@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Sankey</title>
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      overflow: hidden;
+    }
+
+    #chart {
+      width: 700px;
+      height: 350px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="chart"></div>
+
+  <script>
+    fetch("student_performance.csv")
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.trim().split(/\r?\n/);
+
+        // Skip the first extra title row
+        const headers = lines[1].split(",").map(h => h.trim());
+        const dataRows = lines.slice(2);
+
+        const idx = name => headers.indexOf(name);
+
+        const iPrev = idx("Previous_Scores");
+        const iMotiv = idx("Motivation_Level");
+        const iHours = idx("Hours_Studied");
+        const iExam = idx("Exam_Score");
+
+        const nodeLabels = [
+          "Previous Scores: Low", "Previous Scores: Mid", "Previous Scores: High",
+          "Motivation: Low", "Motivation: Medium", "Motivation: High",
+          "Study Hours: Low", "Study Hours: Mid", "Study Hours: High",
+          "Exam Score: Low", "Exam Score: Mid", "Exam Score: High"
+        ];
+
+        const nodeIndex = label => nodeLabels.indexOf(label);
+
+        const counts = {};
+
+        function addLink(source, target) {
+          const key = `${source}||${target}`;
+          counts[key] = (counts[key] || 0) + 1;
+        }
+
+        dataRows.forEach(row => {
+          const cols = row.split(",");
+
+          const prev = +cols[iPrev];
+          const motiv = cols[iMotiv]?.trim();
+          const hours = +cols[iHours];
+          const exam = +cols[iExam];
+
+          if (isNaN(prev) || isNaN(hours) || isNaN(exam) || !motiv) return;
+
+          const prevNode =
+            prev < 60 ? "Previous Scores: Low" :
+            prev < 80 ? "Previous Scores: Mid" :
+            "Previous Scores: High";
+
+          const motivNode =
+            motiv === "Low" ? "Motivation: Low" :
+            motiv === "Medium" ? "Motivation: Medium" :
+            "Motivation: High";
+
+          const hoursNode =
+            hours < 15 ? "Study Hours: Low" :
+            hours <= 25 ? "Study Hours: Mid" :
+            "Study Hours: High";
+
+          const examNode =
+            exam < 60 ? "Exam Score: Low" :
+            exam < 80 ? "Exam Score: Mid" :
+            "Exam Score: High";
+
+          addLink(prevNode, motivNode);
+          addLink(motivNode, hoursNode);
+          addLink(hoursNode, examNode);
+        });
+
+        const sources = [];
+        const targets = [];
+        const values = [];
+
+        Object.entries(counts).forEach(([key, value]) => {
+          const [source, target] = key.split("||");
+          sources.push(nodeIndex(source));
+          targets.push(nodeIndex(target));
+          values.push(value);
+        });
+
+        const nodeColors = [
+          "#f4a261", "#e9c46a", "#e76f51",
+          "#a8dadc", "#457b9d", "#1d3557",
+          "#b7e4c7", "#52b788", "#1b4332",
+          "#ffb3c1", "#ff4d6d", "#c9184a"
+        ];
+
+        Plotly.newPlot(
+          "chart",
+          [{
+            type: "sankey",
+            orientation: "h",
+            arrangement: "snap",
+            node: {
+              pad: 14,
+              thickness: 18,
+              line: { color: "rgba(0,0,0,0.25)", width: 0.5 },
+              label: nodeLabels,
+              color: nodeColors
+            },
+            link: {
+              source: sources,
+              target: targets,
+              value: values,
+              color: "rgba(108,99,255,0.18)"
+            }
+          }],
+          {
+            width: 760,
+            height: 340,
+            margin: { l: 10, r: 10, t: 10, b: 10 },
+            font: { size: 10, family: "Arial, sans-serif" },
+            paper_bgcolor: "#f7f7f7",
+            plot_bgcolor: "#f7f7f7"
+          },
+          {
+            displayModeBar: false,
+            responsive: false
+          }
+        );
+      })
+      .catch(error => {
+        console.error("Sankey load error:", error);
+      });
+  </script>
+</body>
+</html>

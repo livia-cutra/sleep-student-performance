@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Bar Chart</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      background: #f7f7f7;
+    }
+
+    .controls {
+      text-align: center;
+      padding: 10px 10px 0;
+    }
+
+    select {
+      font-size: 14px;
+      padding: 6px 10px;
+      margin: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <select id="dropdown">
+      <option value="Sleep_Group">Sleep Duration</option>
+      <option value="Motivation_Level">Motivation</option>
+      <option value="Family_Income">Family Income</option>
+      <option value="Physical_Activity">Physical Activity</option>
+      <option value="Access_to_Resources">Resources</option>
+    </select>
+
+    <select id="dropdown2">
+      <option value="all">All Schools</option>
+      <option value="Public">Public</option>
+      <option value="Private">Private</option>
+    </select>
+  </div>
+
+  <svg></svg>
+
+  <script src="test2.js"></script>
+</body>
+</html>
