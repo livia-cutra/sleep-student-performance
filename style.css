@@ -119,6 +119,10 @@ body {
   height: 380px;
 }
 
+.facet-card iframe{
+  height: 410px;
+}
+
 .viz-row {
   display: flex;
   gap: 24px;
