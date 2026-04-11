@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head> 
   <meta charset="UTF-8">
   <title>Student Lifestyle, Study Habits, and Academic Performance</title>
   <link rel="stylesheet" href="style.css">
@@ -64,23 +64,65 @@
           relatively narrow range of 60 to 75, with very few individuals scoring below 50 or above 85. 
           This indicates a highly consistent performance across the student body with most learners 
           achieving moderate success.
+  <div class="viz-card wide-card bar-row-card">
+  <div class="bar-row">
+    <div class="bar-left">
+      <h3>Student Performance by Lifestyle Factor</h3>
+      <iframe src="visualizations/barchart.html"></iframe>
+      <p>
+        This interactive bar chart lets users compare average exam scores across
+        lifestyle and background categories such as sleep duration, motivation,
+        family income, physical activity, and access to resources. By changing
+        both the factor and school type filter, viewers can explore how academic
+        performance differs across student groups.
+      </p>
+    </div>
+
+    <div class="bar-right">
+      <h3>How to Read This Chart</h3>
+
+      <div class="insight-box">
+        <h4>Interactive comparison</h4>
+        <p>
+          Use the first dropdown to switch between lifestyle factors such as sleep,
+          motivation, family income, physical activity, and access to resources.
         </p>
       </div>
 
-  <div class="viz-card">
-    <h3>Sleep Duration vs. Exam Score</h3>
-    <iframe src="visualizations/sleep.html"></iframe>
-    <p>
-   This visualization explores how sleep duration relates to exam performance.
-    It helps identify whether moderate sleep ranges are associated with stronger
-    academic outcomes compared to very low or very high sleep durations.
-   </p>
-  </div>
+      <div class="insight-box">
+        <h4>School filter</h4>
+        <p>
+          Use the second dropdown to compare whether average exam performance changes
+          between public and private school groups.
+        </p>
+      </div>
 
-  <div class="viz-card wide-card">
+      <div class="insight-box">
+        <h4>Main purpose</h4>
+        <p>
+          This chart highlights which broader lifestyle and background variables are
+          associated with stronger or weaker average exam scores.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="viz-card wide-card sankey-card">
+  <h3>Student Performance Flow Across Key Factors</h3>
+  <iframe src="visualizations/sankey.html"></iframe>
+  <p>
+    This Sankey diagram shows how students move from previous academic
+    scores through motivation and study-hour groupings into final exam
+    outcomes. It helps highlight how different starting points can still
+    lead to similar performance patterns once behavioral factors are considered.
+  </p>
+</div>
+
+ <div class="viz-card wide-card scatter-card">
   <h3>Hours Studied vs. Exam Score</h3>
 
-  <div class="viz-row">
+  <div class="viz-row scatter-row">
     <iframe src="visualizations/scatterplot.html"></iframe>
 
     <div class="viz-text">
@@ -90,6 +132,32 @@
         diminishing returns at higher study hours, and how much variation exists within
         different study time ranges.
       </p>
+    <div class="scatter-right">
+      <h3>How to Read This Chart</h3>
+
+      <div class="insight-box">
+        <h4>Relationship shown</h4>
+        <p>
+          Each point represents a student, with hours studied on the x-axis and exam
+          score on the y-axis. The upward trend line shows the overall positive relationship.
+        </p>
+      </div>
+
+      <div class="insight-box">
+        <h4>Interactive filters</h4>
+        <p>
+          Use the school type dropdown and minimum study-hours slider to explore whether
+          the pattern changes across groups and across different study ranges.
+        </p>
+      </div>
+
+      <div class="insight-box">
+        <h4>Main takeaway</h4>
+        <p>
+          Students who study more generally score higher, but the spread of points shows
+          that study time alone does not fully explain academic performance.
+        </p>
+      </div>
     </div>
   </div>
 </div>
