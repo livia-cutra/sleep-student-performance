@@ -57,11 +57,13 @@
 
       <div class="viz-card">
         <h3>Distribution of Exam Scores</h3>
-        <iframe src="visualizations/histogram.html"></iframe>
+        <iframe src="visualizations/viz1_histogram.html"></iframe>
         <p>
-          This histogram provides an overall view of how exam scores are distributed across the dataset.
-          It helps establish a baseline for the project by showing where most students cluster and whether
-          scores are concentrated in a narrow or broad range.
+          This visualization shows that the exam scores for the 6,607 students follow a normal distribution, 
+          centered around a score of approximately 68. The majority of students achieve scores within a 
+          relatively narrow range of 60 to 75, with very few individuals scoring below 50 or above 85. 
+          This indicates a highly consistent performance across the student body with most learners 
+          achieving moderate success.
         </p>
       </div>
 
@@ -127,11 +129,14 @@
 
       <div class="viz-card">
         <h3>Motivation vs. Performance</h3>
-        <iframe src="visualizations/motivation.html"></iframe>
+        <iframe src="visualizations/viz2_faceted.html"></iframe>
         <p>
-          This visualization examines how motivation level relates to student performance. It helps reveal
-          whether students with higher motivation tend to achieve stronger scores and how motivation compares
-          with the other behavioral factors included in the project.
+          This visualization highlights a clear positive relationship between a student's self-reported 
+          motivation level and their actual exam performance. Students in the "High" motivation category 
+          have a distribution that is noticeably shifted toward higher scores compared to those in the 
+          "Low" motivation group. While all three groups maintain a bell-shaped distribution, the peak (mode) 
+          for highly motivated students is significantly further to the right on the x-axis, suggesting that 
+          higher motivation is a key driver for higher academic achievement.
         </p>
       </div>
 
@@ -183,9 +188,16 @@
     <div class="conclusion">
       <h3>Conclusion</h3>
       <p>
-        Student academic success is influenced by more than one variable. Across the visualizations, the data
-        suggests that exam performance is shaped by the interaction of study habits, sleep behavior, and other
-        lifestyle and support-related factors.
+        Student academic performance is shaped by more than hours spent studying. Across our visualizations, 
+        three patterns stand out. First, sleep and study time work together; students with balanced habits 
+        consistently outperform those who prioritize one at the expense of the other. Second, motivation 
+        and access to resources amplify academic effort; students with higher motivation and better resources 
+        tend to score higher even when study time is similar. Third, no single factor determines outcomes; the 
+        strongest predictor of exam performance appears to be the combination of consistent behavioral habits 
+        rather than any individual variable.
+        
+        Future work could explore whether interventions targeting sleep consistency or resource access would 
+        have a measurable impact on scores, and whether these patterns hold across different school types or income levels.
       </p>
     </div>
 
