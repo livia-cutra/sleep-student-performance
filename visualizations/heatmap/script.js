@@ -76,7 +76,6 @@ legendGroup.append("rect")
   .style("stroke", "#999");
 
 d3.text("student_performance.csv").then(raw => {
-  // robust line splitting for both \n and \r\n
   const cleaned = raw.trim().split(/\r?\n/).slice(1).join("\n");
 
   const data = d3.csvParse(cleaned, d => ({
@@ -90,6 +89,45 @@ d3.text("student_performance.csv").then(raw => {
     !isNaN(d.Exam_Score) &&
     d.School_Type
   );
+
+  // Build once from the full dataset so the color meaning stays consistent
+  const fullGrouped = d3.rollups(
+    data,
+    values => ({
+      avg_score: d3.mean(values, d => d.Exam_Score),
+      count: values.length
+    }),
+    d => d.Hours_Studied,
+    d => d.Sleep_Hours
+  );
+
+  const fullCellData = [];
+  hoursValues.forEach(hour => {
+    sleepValues.forEach(sleep => {
+      const hourGroup = fullGrouped.find(g => +g[0] === hour);
+      const sleepGroup = hourGroup ? hourGroup[1].find(s => +s[0] === sleep) : null;
+
+      fullCellData.push({
+        Hours_Studied: hour,
+        Sleep_Hours: sleep,
+        avg_score: sleepGroup ? sleepGroup[1].avg_score : null,
+        count: sleepGroup ? sleepGroup[1].count : 0
+      });
+    });
+  });
+
+  const fullAvgValues = fullCellData
+    .map(d => d.avg_score)
+    .filter(v => v !== null && !isNaN(v));
+
+  const fullCountValues = fullCellData
+    .map(d => d.count)
+    .filter(v => v > 0);
+
+  const fixedDomains = {
+    avg_score: [d3.min(fullAvgValues), d3.max(fullAvgValues)],
+    count: [d3.min(fullCountValues), d3.max(fullCountValues)]
+  };
 
   function updateChart() {
     const selectedSchool = schoolFilter.property("value");
@@ -132,28 +170,21 @@ d3.text("student_performance.csv").then(raw => {
     chartGroup.select(".y-axis")
       .call(d3.axisLeft(yScale));
 
-    const valueKey = selectedMetric;
-    const validValues = cellData
-      .map(d => d[valueKey])
-      .filter(v => v !== null && !isNaN(v) && v > 0);
-
-    const minValue = d3.min(validValues);
-    const maxValue = d3.max(validValues);
+    const [fixedMin, fixedMax] = fixedDomains[selectedMetric];
 
     const colorScale = d3.scaleSequential()
-      .domain([minValue, maxValue])
+      .domain([fixedMin, fixedMax])
       .interpolator(d3.interpolateYlOrRd);
 
     legendTitle.text(selectedMetric === "avg_score" ? "Avg Score" : "Count");
-
-    legendScaleY.domain([minValue, maxValue]);
+    legendScaleY.domain([fixedMin, fixedMax]);
 
     linearGradient.selectAll("stop").remove();
 
     d3.range(0, 1.01, 0.1).forEach(t => {
       linearGradient.append("stop")
         .attr("offset", `${t * 100}%`)
-        .attr("stop-color", colorScale(minValue + t * (maxValue - minValue)));
+        .attr("stop-color", colorScale(fixedMin + t * (fixedMax - fixedMin)));
     });
 
     legendGroup.select("rect")

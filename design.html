@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Design Decisions | Student Lifestyle, Study Habits, and Academic Performance</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .design-hero {
+            background: linear-gradient(135deg, #1c1a4a, #2b2670);
+            color: white;
+            padding: 90px 20px 70px;
+            text-align: center;
+        }
+
+        .design-hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .design-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            line-height: 1.05;
+        }
+
+        .design-hero p {
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: #dddafc;
+            margin: 0 auto;
+            max-width: 760px;
+        }
+
+        .design-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 56px 20px 18px;
+        }
+
+        .design-section h2 {
+            font-size: 2rem;
+            color: #1e1e7a;
+            margin-bottom: 14px;
+        }
+
+        .design-section-intro {
+            max-width: 820px;
+            color: #444;
+            font-size: 1rem;
+            line-height: 1.75;
+            margin-bottom: 24px;
+        }
+
+        .design-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+            margin-top: 18px;
+        }
+
+        .design-card {
+            background: white;
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #6C63FF;
+        }
+
+        .design-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.08rem;
+            color: #1e1e7a;
+        }
+
+        .design-card p {
+            margin: 0;
+            line-height: 1.65;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .design-highlight {
+            background: #ece9ff;
+            border-radius: 16px;
+            padding: 28px;
+            margin-top: 24px;
+        }
+
+        .design-highlight h3 {
+            margin-top: 0;
+            color: #1e1e7a;
+            font-size: 1.15rem;
+        }
+
+        .design-highlight p {
+            margin-bottom: 0;
+            line-height: 1.75;
+            color: #444;
+        }
+
+        .design-footer-note {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 26px 20px 68px;
+            text-align: center;
+            line-height: 1.75;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .design-hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .design-section {
+                padding-top: 42px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="top-nav">
+        <a href="index.html?skipIntro=1#top">Home</a>
+        <a href="index.html?skipIntro=1#visualizations">Visualizations</a>
+        <a href="index.html?skipIntro=1#takeaways">Takeaways</a>
+        <a href="design.html">Design Decisions</a>
+    </nav>
+
+    <header class="design-hero">
+        <div class="design-hero-content">
+            <h1>Design Decisions</h1>
+            <p>
+                This page explains how we designed our final project site to present student performance patterns
+                clearly, consistently, and interactively. Our choices were guided by ideas from class, including
+                visual hierarchy, chart selection, narrative flow, and audience-centered design.
+            </p>
+        </div>
+    </header>
+
+    <section class="design-section">
+        <h2>Our Design Goals</h2>
+        <p class="design-section-intro">
+            We wanted the site to feel like a connected visual story rather than a collection of separate charts.
+            Our main goals were clarity, consistency, and helping viewers move easily from broad patterns to
+            more detailed comparisons.
+        </p>
+
+        <div class="design-card-grid">
+            <div class="design-card">
+                <h3>Clarity</h3>
+                <p>
+                    We used figure labels, readable spacing, and “How to Read This Chart” cards to make each
+                    visualization easier to understand quickly.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Consistency</h3>
+                <p>
+                    Repeated card layouts, purple accent colors, and consistent labels helped the project feel
+                    visually unified even as chart types changed.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Usability</h3>
+                <p>
+                    We kept interactions that improved interpretation and removed controls that felt unnecessary
+                    or distracting after feedback.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="design-section">
+        <h2>Visual and Layout Decisions</h2>
+        <p class="design-section-intro">
+            The page structure was designed to guide viewers through the project smoothly. We used an intro
+            screen, a simple navbar, and a card-based layout so the site would feel polished and easy to navigate.
+        </p>
+
+        <div class="design-card-grid">
+            <div class="design-card">
+                <h3>Intro Screen</h3>
+                <p>
+                    We added an opening screen to create a stronger first impression and make the project feel
+                    more presentation-ready.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Navigation Bar</h3>
+                <p>
+                    The navbar improves flow by letting viewers jump directly to the visualizations, takeaways,
+                    and design reflection page.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Figure Labels</h3>
+                <p>
+                    Numbering each chart made the visuals easier to reference during presentation and discussion.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>How-to-Read Cards</h3>
+                <p>
+                    These cards help viewers understand what to focus on before reading each chart more deeply.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="design-section">
+        <h2>Why We Chose These Visualizations</h2>
+
+        <p class="design-section-intro">
+            Each visualization was selected to answer a specific question about student performance.
+            We focused on matching chart type to task—distribution, comparison, or relationship—while
+            keeping designs simple and readable.
+        </p>
+
+        <div class="design-card-grid">
+
+            <div class="design-card">
+                <h3>Histogram (Distribution)</h3>
+                <p>
+                    A histogram with a small bin size was used to clearly show the overall score distribution.
+                    A single color keeps the focus on shape, while tooltips provide exact counts for each range.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Faceted Chart (Motivation)</h3>
+                <p>
+                    A faceted layout allows direct comparison across motivation levels while keeping scales consistent.
+                    Distinct colors reinforce the progression from low to high motivation.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Line Chart (Trends)</h3>
+                <p>
+                    The line chart highlights how scores change across resource levels for different motivation groups.
+                    It was chosen to show trends more clearly than individual variation.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Box Plot (Spread)</h3>
+                <p>
+                    A box plot summarizes score distributions across study categories using medians and spread.
+                    Overlaying points adds detail without losing the overall structure.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Bar Chart (Comparison)</h3>
+                <p>
+                    A grouped bar chart makes it easy to compare public vs. private schools across categories.
+                    Side-by-side placement improves readability and direct comparison.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Heatmap (Two Variables)</h3>
+                <p>
+                    The heatmap shows how study and sleep interact in a compact grid.
+                    A fixed color scale keeps comparisons accurate across filters.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Scatterplot (Relationship)</h3>
+                <p>
+                    The scatterplot preserves individual points while showing trends.
+                    Separate regression lines make school-type differences easier to see.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Treemap (Distribution by Group)</h3>
+                <p>
+                    The treemap replaced the Sankey to improve readability.
+                    It makes smaller groups easier to compare and better supports distribution analysis.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="design-section">
+        <h2>What We Applied from Class</h2>
+        <p class="design-section-intro">
+            This project reflects several ideas we practiced throughout the semester, especially narrative
+            structure, chart-task fit, audience-centered design, and iterative revision.
+        </p>
+
+        <div class="design-card-grid">
+            <div class="design-card">
+                <h3>Visual Storytelling</h3>
+                <p>
+                    We arranged the figures from overview to comparison to deeper relationship analysis so the
+                    site would read as a coherent story.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Chart-Task Fit</h3>
+                <p>
+                    Different chart types were chosen based on the kind of question we wanted to answer:
+                    distribution, comparison, trend, or relationship.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Audience-Centered Design</h3>
+                <p>
+                    We designed the site for viewers who may not already know the dataset, which is why we added
+                    labels, guidance cards, and consistent section structure.
+                </p>
+            </div>
+
+            <div class="design-card">
+                <h3>Iteration</h3>
+                <p>
+                    Feedback helped us revise chart order, replace less readable visuals, refine interactions,
+                    and improve layout consistency across the final site.
+                </p>
+            </div>
+        </div>
+
+        <div class="design-highlight">
+            <h3>How Feedback Improved the Final Site</h3>
+            <p>
+                Our final site became stronger through revision. We reordered figures to improve flow, revised
+                the grouped bar chart for direct public/private comparison, replaced the Sankey with a clearer
+                treemap, separated regression lines in the scatterplot, fixed the heatmap legend scale, and
+                added figure labels plus explanation cards to improve readability.
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Student Lifestyle & Academic Performance</h3>
+            <p>
+                Design Decisions & Reflection • DS 4200 Final Project
+            </p>
+
+            <div class="footer-meta">
+                <span>Vitrinnie Asante-Tannor</span>
+                <span>Isabella Boateng</span>
+                <span>Livia Cutra</span>
+                <span>David Gyamfi</span>
+            </div>
+
+            <div class="footer-source">
+                Dataset: Kaggle Student Performance Dataset
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

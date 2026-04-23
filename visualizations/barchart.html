@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Bar Chart</title>
+  <title>Figure 2 Bar Chart</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       background: #f7f7f7;
     }
@@ -29,22 +29,21 @@
       display: block;
       margin: 0 auto;
     }
+
+    .legend {
+      font-size: 13px;
+    }
   </style>
 </head>
 <body>
   <div class="controls">
+    <label for="dropdown"><strong>Factor:</strong></label>
     <select id="dropdown">
+      <option value="Access_to_Resources">Resources</option>
       <option value="Sleep_Group">Sleep Duration</option>
       <option value="Motivation_Level">Motivation</option>
       <option value="Family_Income">Family Income</option>
-      <option value="Physical_Activity">Physical Activity</option>
-      <option value="Access_to_Resources">Resources</option>
-    </select>
-
-    <select id="dropdown2">
-      <option value="all">All Schools</option>
-      <option value="Public">Public</option>
-      <option value="Private">Private</option>
+      <option value="Physical_Activity_Group">Physical Activity</option>
     </select>
   </div>
 

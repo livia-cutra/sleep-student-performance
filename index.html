@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+
+<head>
   <meta charset="UTF-8">
   <title>Student Lifestyle, Study Habits, and Academic Performance</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+  <!-- TITILE PAGE -->
+  <div id="intro-screen" class="intro-screen">
+    <div class="intro-content">
+      <p class="intro-kicker">DS 4200 • Information Presentation & Visualization Final Project</p>
+      <h1>
+        What Shapes <span>Student Success</span>?
+      </h1>
+      <p class="intro-subtitle">
+        Exploring how sleep, study habits, motivation, and lifestyle influence exam performance
+      </p>
+      <p class="intro-names">
+        Vitrinnie Asante-Tannor • Isabella Boateng • Livia Cutra • David Gyamfi
+      </p>
+      <button id="enter-site" class="intro-button">View Project</button>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="top-nav">
+    <a href="#top">Home</a>
+    <a href="#visualizations">Visualizations</a>
+    <a href="#takeaways">Takeaways</a>
+    <a href="design.html">Design Decisions</a>
+  </nav>
 
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="top">
     <div class="hero-content">
       <h1>Student Lifestyle, Study Habits, and Academic Performance</h1>
       <p>Exploring how sleep, study time, motivation, and other lifestyle factors relate to exam success</p>
@@ -22,11 +47,11 @@
     <div class="info-card">
       <h3>Introduction</h3>
       <p>
-        Student performance is influenced by more than just study time and classroom learning. 
-        Factors like sleep, physical activity, and overall lifestyle can also have a big impact, 
-        especially since sleep is closely linked to focus, memory, and well-being. This project 
-        explores how sleep and other lifestyle factors relate to exam scores using a dataset that 
-        includes academic and behavioral information. By analyzing these patterns, we aim to better 
+        Student performance is influenced by more than just study time and classroom learning.
+        Factors like sleep, physical activity, and overall lifestyle can also have a big impact,
+        especially since sleep is closely linked to focus, memory, and well-being. This project
+        explores how sleep and other lifestyle factors relate to exam scores using a dataset that
+        includes academic and behavioral information. By analyzing these patterns, we aim to better
         understand what influences student success.
       </p>
     </div>
@@ -34,10 +59,10 @@
     <div class="info-card">
       <h3>Dataset Overview</h3>
       <p>
-        This dataset includes information on 6,608 students and contains 13 different features 
-        related to their academic performance and lifestyle. These features include variables 
-        such as study habits, sleep duration, motivation levels, and socioeconomic factors. 
-        The data comes from a student performance dataset on Kaggle and provides a comprehensive 
+        This dataset includes information on 6,607 students and contains 13 different features
+        related to their academic performance and lifestyle. These features include variables
+        such as study habits, sleep duration, motivation levels, and socioeconomic factors.
+        The data comes from a student performance dataset on Kaggle and provides a comprehensive
         view of the different factors that may influence exam outcomes.
       </p>
     </div>
@@ -52,205 +77,365 @@
   </section>
 
   <!-- VISUALIZATIONS -->
-  <section class="viz-section">
+  <section class="viz-section" id="visualizations">
     <h2>Key Visualizations</h2>
 
     <div class="viz-grid">
 
-      <div class="viz-card">
+      <div class="viz-card wide-card top-distribution-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 1</span>
+          <span class="viz-tag">Altair</span>
+        </div>
         <h3>Distribution of Exam Scores</h3>
-        <iframe src="visualizations/viz1_histogram.html"></iframe>
-        <p>
-          This visualization shows that the exam scores for the 6,607 students follow a normal distribution, 
-          centered around a score of approximately 68. The majority of students achieve scores within a 
-          relatively narrow range of 60 to 75, with very few individuals scoring below 50 or above 85. 
-          This indicates a highly consistent performance across the student body with most learners 
-          achieving moderate success.
-        </p>
-    </div>
-  <div class="viz-card wide-card bar-row-card">
-  <div class="bar-row">
-    <div class="bar-left">
-      <h3>Student Performance by Lifestyle Factor</h3>
-      <iframe src="visualizations/barchart.html"></iframe>
-      <p>
-        This interactive bar chart lets users compare average exam scores across
-        lifestyle and background categories such as sleep duration, motivation,
-        family income, physical activity, and access to resources. By changing
-        both the factor and school type filter, viewers can explore how academic
-        performance differs across student groups.
-      </p>
-    </div>
 
-    <div class="bar-right">
-      <h3>How to Read This Chart</h3>
+        <div class="side-explainer-layout">
+          <iframe src="visualizations/viz1_histogram.html"></iframe>
 
-      <div class="insight-box">
-        <h4>Interactive comparison</h4>
-        <p>
-          Use the first dropdown to switch between lifestyle factors such as sleep,
-          motivation, family income, physical activity, and access to resources.
-        </p>
-      </div>
+          <div class="side-explainer-right">
+            <h3>How to Read This Chart</h3>
 
-      <div class="insight-box">
-        <h4>School filter</h4>
+            <div class="explainer-card">
+              <h4>What it shows</h4>
+              <p>
+                This histogram groups exam scores into bins so we can see where most students are concentrated.
+              </p>
+            </div>
+
+            <div class="explainer-card">
+              <h4>Main pattern</h4>
+              <p>
+                Most scores fall in the middle range, with relatively few students at the very low or very high ends.
+              </p>
+            </div>
+
+            <div class="explainer-card">
+              <h4>Why it matters</h4>
+              <p>
+                This gives a baseline view of the dataset before comparing motivation, resources, sleep, and study
+                habits.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <p>
-          Use the second dropdown to compare whether average exam performance changes
-          between public and private school groups.
+          This histogram shows that exam scores are concentrated in a fairly narrow middle range,
+          with most students scoring around the upper 60s to low 70s. The overall distribution is
+          approximately bell-shaped, which gives useful context for interpreting the other charts
+          in the project.
         </p>
       </div>
 
-      <div class="insight-box">
-        <h4>Main purpose</h4>
+      <div class="viz-card wide-card top-distribution-card facet-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 2</span>
+          <span class="viz-tag">Altair</span>
+        </div>
+        <h3>Exam Score Distribution by Motivation Level</h3>
+        <iframe src="visualizations/viz2_faceted.html"></iframe>
+
+        <div class="explainer-row">
+          <div class="explainer-card">
+            <h4>Panel structure</h4>
+            <p>
+              Each panel isolates one motivation group so the score distributions can be compared more clearly.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>What to compare</h4>
+            <p>
+              Look at where each distribution centers and whether the high-motivation panel shifts toward higher scores.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Main takeaway</h4>
+            <p>
+              Motivation does not completely determine outcomes, but higher motivation is associated with better
+              performance.
+            </p>
+          </div>
+        </div>
+
         <p>
-          This chart highlights which broader lifestyle and background variables are
-          associated with stronger or weaker average exam scores.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <div class="viz-card wide-card sankey-card">
-  <h3>Student Performance Flow Across Key Factors</h3>
-  <iframe src="visualizations/sankey.html"></iframe>
-  <p>
-    This Sankey diagram shows how students move from previous academic
-    scores through motivation and study-hour groupings into final exam
-    outcomes. It helps highlight how different starting points can still
-    lead to similar performance patterns once behavioral factors are considered.
-  </p>
-</div>
-
- <div class="viz-card wide-card scatter-card">
-  <h3>Hours Studied vs. Exam Score</h3>
-
-  <div class="viz-row scatter-row">
-    <iframe src="visualizations/scatterplot.html"></iframe>
-
-    <div class="scatter-right">
-      <h3>How to Read This Chart</h3>
-
-      <div class="insight-box">
-        <h4>Relationship shown</h4>
-        <p>
-          Each point represents a student, with hours studied on the x-axis and exam
-          score on the y-axis. The upward trend line shows the overall positive relationship.
-        </p>
-      </div>
-
-      <div class="insight-box">
-        <h4>Interactive filters</h4>
-        <p>
-          Use the school type dropdown and minimum study-hours slider to explore whether
-          the pattern changes across groups and across different study ranges.
-        </p>
-      </div>
-
-      <div class="insight-box">
-        <h4>Main takeaway</h4>
-        <p>
-          Students who study more generally score higher, but the spread of points shows
-          that study time alone does not fully explain academic performance.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
-      <div class="viz-card">
-        <h3>Exam Scores by Sleep Category</h3>
-        <iframe src="visualizations/boxplot.html"></iframe>
-        <p>
-          This box plot shows how exam scores change across different study time categories. 
-          Students who study more generally have higher scores, but there’s still a lot of 
-          variation within each group. This suggests that studying helps, but it’s not the 
-          only factor that affects performance.
+          This faceted distribution plot compares exam-score patterns across low, medium, and high
+          motivation groups. The shape of the distributions remains similar, but the center of the
+          high-motivation group shifts toward stronger scores, suggesting that motivation is associated
+          with better academic performance.
         </p>
       </div>
 
       <div class="viz-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 3</span>
+          <span class="viz-tag">Altair</span>
+        </div>
         <h3>Impact of Motivation and Resources on Exam Scores</h3>
         <iframe src="visualizations/linechart.html"></iframe>
+
+        <div class="explainer-row two-card">
+          <div class="explainer-card">
+            <h4>How to read the lines</h4>
+            <p>
+              Each line represents a motivation level, and the x-axis moves from low to high access to resources.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Main takeaway</h4>
+            <p>
+              Motivation and resources both matter, and students with stronger motivation generally score higher at each
+              resource level.
+            </p>
+          </div>
+        </div>
+
         <p>
-          This line chart shows how exam scores change based on access to resources and 
-          motivation levels. Students with higher motivation tend to have better scores, 
-          and having more resources also helps improve performance. Overall, both motivation 
-          and resources seem to play a role in how well students do.
+          This line chart compares average exam scores across low, medium, and high access-to-resources
+          levels for each motivation group. It shows that both motivation and resources matter, with
+          higher motivation generally corresponding to stronger scores at each resource level.
         </p>
       </div>
 
-      <div class="viz-card wide-card">
+      <div class="viz-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 4</span>
+          <span class="viz-tag">Altair</span>
+        </div>
+        <h3>Exam Scores by Study Category</h3>
+        <iframe src="visualizations/boxplot.html"></iframe>
+
+        <div class="explainer-row two-card">
+          <div class="explainer-card">
+            <h4>What the box plot shows</h4>
+            <p>
+              The center line marks the median, while the box and whiskers show how scores spread within each study
+              group.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Main takeaway</h4>
+            <p>
+              Students who study more tend to score higher, but there is still meaningful variation within every group.
+            </p>
+          </div>
+        </div>
+
+        <p>
+          This box plot compares exam-score distributions across low, medium, and high study-time
+          categories. Students who study more generally have higher median scores, but the spread within
+          each group shows that study time is important without being the only factor that shapes outcomes.
+        </p>
+      </div>
+
+      <div class="viz-card wide-card bar-row-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 5</span>
+          <span class="viz-tag">D3</span>
+        </div>
+        <div class="bar-row">
+          <div class="bar-left">
+            <h3>Student Performance by Lifestyle Factor and School Type</h3>
+            <iframe src="visualizations/barchart.html"></iframe>
+            <p>
+              This grouped bar chart compares average exam scores for public and private school students
+              across lifestyle and background categories such as resources, sleep, motivation, income,
+              and physical activity. It is especially useful for showing that school-type differences
+              may reflect more than just access to resources alone.
+            </p>
+          </div>
+
+          <div class="bar-right">
+            <h3>How to Read This Chart</h3>
+
+            <div class="insight-box">
+              <h4>Category dropdown</h4>
+              <p>
+                Use the dropdown to switch between resources, sleep duration, motivation, family income,
+                and physical activity groupings.
+              </p>
+            </div>
+
+            <div class="insight-box">
+              <h4>Side-by-side comparison</h4>
+              <p>
+                Each category shows public and private school averages side by side, making it easier
+                to compare patterns directly.
+              </p>
+            </div>
+
+            <div class="insight-box">
+              <h4>Main takeaway</h4>
+              <p>
+                Differences between school types appear across several factors, suggesting that school
+                context may influence performance beyond any single variable.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="viz-card wide-card compact-wide">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 6</span>
+          <span class="viz-tag">D3</span>
+        </div>
         <h3>Study Hours, Sleep, and Exam Performance</h3>
         <iframe src="visualizations/heatmap/heatmap.html"></iframe>
+
+        <div class="explainer-row">
+          <div class="explainer-card">
+            <h4>Grid meaning</h4>
+            <p>
+              Each cell represents a combination of study hours and sleep hours.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Color meaning</h4>
+            <p>
+              Darker cells indicate stronger values for the selected metric, with the legend fixed for fair comparison.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Main takeaway</h4>
+            <p>
+              Performance appears to reflect the balance between studying and sleeping rather than one factor alone.
+            </p>
+          </div>
+        </div>
+
         <p>
-         This heatmap shows how combinations of study hours and sleep hours relate to student performance.
-         Cells with darker color indicate either higher average exam scores or greater student concentration,
-         depending on the selected setting. The visualization suggests that academic performance is shaped by
-         the balance between studying and sleep rather than by one factor alone.
+          This heatmap shows how combinations of study hours and sleep hours relate to exam outcomes.
+          The fixed legend scale keeps color meaning consistent across school-type filters, making it
+          easier to compare public and private students without the color intensity becoming misleading.
         </p>
       </div>
 
-      <div class="viz-card wide-card facet-card">
-        <h3>Motivation vs. Performance</h3>
-        <iframe src="visualizations/viz2_faceted.html"></iframe>
+      <div class="viz-card wide-card scatter-card">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 7</span>
+          <span class="viz-tag">Altair</span>
+        </div>
+        <h3>Hours Studied vs. Exam Score</h3>
+
+        <div class="viz-row scatter-row">
+          <iframe src="visualizations/scatterplot.html"></iframe>
+
+          <div class="scatter-right">
+            <h3>How to Read This Chart</h3>
+
+            <div class="insight-box">
+              <h4>Relationship shown</h4>
+              <p>
+                Each point represents a student, with hours studied on the x-axis and exam score on the
+                y-axis.
+              </p>
+            </div>
+
+            <div class="insight-box">
+              <h4>Separate trend lines</h4>
+              <p>
+                The chart includes a separate regression line for each school type, making it easier to
+                compare how the study-score relationship differs between public and private students.
+              </p>
+            </div>
+
+            <div class="insight-box">
+              <h4>Main takeaway</h4>
+              <p>
+                Students who study more generally score higher, but the spread of points shows that study
+                time alone does not fully explain academic performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="viz-card wide-card sankey-card compact-wide">
+        <div class="figure-meta">
+          <span class="figure-label">Figure 8</span>
+          <span class="viz-tag">D3</span>
+        </div>
+        <h3>Exam Score Distribution by Student Group</h3>
+        <iframe src="visualizations/sankey.html"></iframe>
+
+        <div class="explainer-row">
+          <div class="explainer-card">
+            <h4>What the boxes represent</h4>
+            <p>
+              Each section shows how many students fall into low, medium, or high exam-score groups within a chosen
+              category.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>What to compare</h4>
+            <p>
+              Compare the size of the colored boxes within each group to see where strong or weak outcomes are more
+              common.
+            </p>
+          </div>
+          <div class="explainer-card">
+            <h4>Main takeaway</h4>
+            <p>
+              The treemap makes smaller score groups easier to see than the earlier Sankey version.
+            </p>
+          </div>
+        </div>
+
         <p>
-          This visualization highlights a clear positive relationship between a student's self-reported 
-          motivation level and their actual exam performance. Students in the "High" motivation category 
-          have a distribution that is noticeably shifted toward higher scores compared to those in the 
-          "Low" motivation group. While all three groups maintain a bell-shaped distribution, the peak (mode) 
-          for highly motivated students is significantly further to the right on the x-axis, suggesting that 
-          higher motivation is a key driver for higher academic achievement.
+          This treemap summarizes how students are distributed across low, medium, and high exam-score
+          groups for different academic and background factors. Compared with the earlier Sankey version,
+          this format makes smaller score groups easier to see and compare.
         </p>
       </div>
+
     </div>
   </section>
 
   <!-- TAKEAWAYS -->
-  <section class="bottom-row">
+  <section class="bottom-row" id="takeaways">
 
     <div class="takeaways">
-  <h3>Key Takeaways</h3>
+      <h3>Key Takeaways</h3>
 
-  <div class="takeaway-box">
-    <h4>Academic success is multi-dimensional</h4>
-    <p>
-      Exam performance is not explained by sleep or study time alone. The visualizations suggest
-      that student outcomes are shaped by a combination of behavioral, academic, and background factors.
-    </p>
-  </div>
+      <div class="takeaway-box">
+        <h4>Academic success is multi-dimensional</h4>
+        <p>
+          Exam performance is not explained by sleep or study time alone. The visualizations suggest
+          that student outcomes are shaped by a combination of behavioral, academic, and background factors.
+        </p>
+      </div>
 
-  <div class="takeaway-box">
-    <h4>Study habits matter most in context</h4>
-    <p>
-      More study time is generally associated with stronger performance, but its impact becomes more
-      meaningful when viewed alongside sleep patterns, attendance, and other lifestyle behaviors.
-    </p>
-  </div>
+      <div class="takeaway-box">
+        <h4>Study habits matter most in context</h4>
+        <p>
+          More study time is generally associated with stronger performance, but its impact becomes more
+          meaningful when viewed alongside sleep patterns, attendance, and other lifestyle behaviors.
+        </p>
+      </div>
 
-  <div class="takeaway-box">
-    <h4>Resources and motivation influence outcomes</h4>
-    <p>
-      Differences in motivation and access-related variables suggest that academic performance is also
-      connected to the broader environment students learn in, not just the effort they put in individually.
-    </p>
-  </div>
-</div>
+      <div class="takeaway-box">
+        <h4>Resources and motivation influence outcomes</h4>
+        <p>
+          Differences in motivation and access-related variables suggest that academic performance is also
+          connected to the broader environment students learn in, not just the effort they put in individually.
+        </p>
+      </div>
+    </div>
 
     <div class="conclusion">
       <h3>Conclusion</h3>
       <p>
-        Student academic performance is shaped by more than hours spent studying. Across our visualizations, 
-        three patterns stand out. First, sleep and study time work together; students with balanced habits 
-        consistently outperform those who prioritize one at the expense of the other. Second, motivation 
-        and access to resources amplify academic effort; students with higher motivation and better resources 
-        tend to score higher even when study time is similar. Third, no single factor determines outcomes; the 
-        strongest predictor of exam performance appears to be the combination of consistent behavioral habits 
+        Student academic performance is shaped by more than hours spent studying. Across our visualizations,
+        three patterns stand out. First, sleep and study time work together; students with balanced habits
+        consistently outperform those who prioritize one at the expense of the other. Second, motivation
+        and access to resources amplify academic effort; students with higher motivation and better resources
+        tend to score higher even when study time is similar. Third, no single factor determines outcomes; the
+        strongest predictor of exam performance appears to be the combination of consistent behavioral habits
         rather than any individual variable.
-        
-        Future work could explore whether interventions targeting sleep consistency or resource access would 
-        have a measurable impact on scores, and whether these patterns hold across different school types or income levels.
+
+        Future work could explore whether interventions targeting sleep consistency or resource access would
+        have a measurable impact on scores, and whether these patterns hold across different school types or income
+        levels.
       </p>
     </div>
 
@@ -258,25 +443,48 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-  <div class="footer-content">
-    <h3>Student Lifestyle & Academic Performance</h3>
-    <p>
-      Data Visualization Project exploring how study habits, sleep, and lifestyle
-      factors influence student performance.
-    </p>
+    <div class="footer-content">
+      <h3>Student Lifestyle & Academic Performance</h3>
+      <p>
+        Data Visualization Project exploring how study habits, sleep, and lifestyle
+        factors influence student performance.
+      </p>
 
-    <div class="footer-meta">
-      <span>Vitrinnie Asante-Tannor</span>
-      <span>Isabella Boateng</span>
-      <span>Livia Cutra</span>
-      <span>David Gyamfi</span>
+      <div class="footer-meta">
+        <span>Vitrinnie Asante-Tannor</span>
+        <span>Isabella Boateng</span>
+        <span>Livia Cutra</span>
+        <span>David Gyamfi</span>
+      </div>
+
+      <div class="footer-source">
+        Dataset: Kaggle Student Performance Dataset
+      </div>
     </div>
+  </footer>
 
-    <div class="footer-source">
-      Dataset: Kaggle Student Performance Dataset
-    </div>
-  </div>
-</footer>
 
+  <script>
+    const introScreen = document.getElementById("intro-screen");
+    const enterButton = document.getElementById("enter-site");
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("skipIntro") === "1" && introScreen) {
+      introScreen.style.display = "none";
+
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
+    if (enterButton && introScreen) {
+      enterButton.addEventListener("click", () => {
+        introScreen.classList.add("hide");
+        setTimeout(() => {
+          introScreen.style.display = "none";
+        }, 450);
+      });
+    }
+  </script>
 </body>
+
 </html>
